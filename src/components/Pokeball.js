@@ -72,8 +72,8 @@ export default class Pokeball extends Container {
      */
     _openBall() {
         gsap.timeline({delay: 0,})
-            .to(this.top, {y: this.top.y + (this.pokemonName.height) * -1, ease: 'bounce.out'}, 1)
-            .to(this.bottom, {y: this.bottom.y + (this.pokemonName.height), ease: 'bounce.out'}, 1)
+            .to(this.top, {y: this.top.y + (this.text.height) * -1, ease: 'bounce.out'}, 1)
+            .to(this.bottom, {y: this.bottom.y + (this.text.height), ease: 'bounce.out'}, 1)
             .then(() => {
                 this.isOpened = true;
                 this.emit(Pokeball.events.OPEN_END);
@@ -96,10 +96,10 @@ export default class Pokeball extends Container {
     }
 
     /**
-     * Update pokemonName's property text with a random name from the list.
+     * Update text's property text with a random name from the list.
      */
     _setRandomText() {
-        this.pokemonName.text = POKEMONS[Math.floor(Math.random() * POKEMONS.length)].toUpperCase();
+        this.text.text = POKEMONS[Math.floor(Math.random() * POKEMONS.length)].toUpperCase();
     }
 
     /**
@@ -109,7 +109,7 @@ export default class Pokeball extends Container {
      * @private
      */
     _addPokemonName() {
-        this.pokemonName = new PIXI.Text('a', {
+        this.text = new PIXI.Text('a', {
             fontFamily: 'Arial Black',
             fontWeight: 'bold',
             fontSize: 90,
@@ -117,16 +117,16 @@ export default class Pokeball extends Container {
             fill: 0xFFFFFF,
             align: 'center',
         });
-        this.pokemonName.alpha = 0;
-        this.pokemonName.anchor.x = 0.5;
-        this.pokemonName.x = this.top.width / 2;
-        this.pokemonName.y = this.bottom.y - 35;
+        this.text.alpha = 0;
+        this.text.anchor.x = 0.5;
+        this.text.x = this.top.width / 2;
+        this.text.y = this.bottom.y - 35;
 
-        this.addChild(this.pokemonName);
-        this.pokemonName.zIndex = 0;
+        this.addChild(this.text);
+        this.text.zIndex = 0;
 
         this.on(Pokeball.events.OPEN_START, () => {
-            gsap.to(this.pokemonName, {
+            gsap.to(this.text, {
                 alpha: 1,
                 delay: 1,
                 duration: 1
@@ -134,7 +134,7 @@ export default class Pokeball extends Container {
         });
 
         this.on(Pokeball.events.CLOSE_START, () => {
-            gsap.to(this.pokemonName, {
+            gsap.to(this.text, {
                 alpha: 0,
                 delay: 1,
                 duration: 0.5,
