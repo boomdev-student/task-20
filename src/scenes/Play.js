@@ -21,7 +21,8 @@ export default class Play extends Scene {
         button.y = pokeball.height / 2 - button.height;
         this.addChild(button);
 
-        this.on(Pokeball.events.OPEN_START, () => console.log('wtf'));
+        pokeball.on(Pokeball.events.OPEN_START, () => button.hide());
+        pokeball.on(Pokeball.events.CLOSE_END, () => button.show());
     }
 
     /**

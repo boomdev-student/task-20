@@ -1,11 +1,14 @@
 import {Container, Graphics, Text} from 'pixi.js';
 import Pokeball from "./Pokeball";
+import gsap from 'gsap';
 
 export default class Button extends Container {
 
     constructor(onPress) {
         super();
         this.name = 'button';
+
+        this.alpha = 1;
 
         this.interactive = true;
         this.buttonMode = true;
@@ -42,12 +45,18 @@ export default class Button extends Container {
     }
 
     show() {
-        console.log('button show');
-        this.visible = true;
+        gsap.to(this, {
+            alpha: 1,
+            delay: 0,
+            duration: 0.5
+        });
     }
 
     hide() {
-        console.log('button end');
-        this.visible = false;
+        gsap.to(this, {
+            alpha: 0,
+            delay: 0,
+            duration: 0.5
+        });
     }
 }
