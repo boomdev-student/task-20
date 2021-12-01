@@ -1,4 +1,4 @@
-import * as PIXI from "pixi.js";
+import * as PIXI from "pixi.js-legacy";
 import Application from "./core/Application";
 
 // required for pixi dev tools to work

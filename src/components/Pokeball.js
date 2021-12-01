@@ -1,4 +1,4 @@
-import {Container, Sprite} from 'pixi.js';
+import {Container, Sprite} from 'pixi.js-legacy';
 import gsap from 'gsap';
 import POKEMONS from '../assets/pokemons.json';
 

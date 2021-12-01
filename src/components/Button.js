@@ -1,4 +1,4 @@
-import {Container, Graphics, Text} from 'pixi.js';
+import {Container, Graphics, Text} from 'pixi.js-legacy';
 import Pokeball from "./Pokeball";
 import gsap from 'gsap';
 
